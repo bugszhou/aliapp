@@ -1,0 +1,26 @@
+{
+    "pages":[
+        "pages/index/index"
+    ],
+    "window":{
+        "titleBarColor": "#fff",
+        "defaultTitle": "{{ name }}"
+    }{{#tab}},
+    "tabBar": {
+        "items": [
+            {
+                "pagePath": "pages/index/index",
+                "icon": "./assets/imgs/tab.png",
+                "activeIcon": "./assets/imgs/tab.png",
+                "name": "tab1"
+            },
+            {
+                "pagePath": "pages/index/index",
+                "icon": "./assets/imgs/tab.png",
+                "activeIcon": "./assets/imgs/tab.png",
+                "name": "tab2"
+            }
+        ]
+    }
+    {{/tab}}
+}
