@@ -5,7 +5,7 @@
     "window":{
         "titleBarColor": "#fff",
         "defaultTitle": "{{ name }}"
-    }{{#tab}},
+    },{{#tab}}
     "tabBar": {
         "items": [
             {
@@ -21,6 +21,7 @@
                 "name": "tab2"
             }
         ]
-    }
+    },
     {{/tab}}
+    "debug": true
 }
