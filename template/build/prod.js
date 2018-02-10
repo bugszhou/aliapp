@@ -4,6 +4,7 @@
  * scss
  * eslint
  */
+process.env.NODE_ENV = 'production';
 const rm = require('rimraf'),
     webpack = require('webpack'),
     env = require('../config/env.prod.js'),
@@ -18,7 +19,7 @@ let appConfig = baseWebpackConfigs.appConfig;
 appConfig.plugins.push(new webpack.DefinePlugin({
     'process.env': env
 }));
-rm('dist', function(err) {
+rm('dist/**/*', function(err) {
     if (err) {
         throw err;
     }
