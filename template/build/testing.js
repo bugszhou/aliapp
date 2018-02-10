@@ -19,7 +19,7 @@ appConfig.plugins.push(new webpack.DefinePlugin({
     'process.env': env
 }));
 
-rm('dist', function(err) {
+rm('dist/**/*', function(err) {
     if (err) {
         throw err;
     }
