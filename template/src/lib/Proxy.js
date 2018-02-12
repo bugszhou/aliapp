@@ -30,7 +30,7 @@
     /**
     * @constructor
     * @param {!Object} target
-    * @param {{apply, construct, get, set}} handler
+    * @param {apply, construct, get, set} handler
     */
     nProxy = function(target, handler) {
         if (!isObject(target) || !isObject(handler)) {
