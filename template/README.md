@@ -1,6 +1,6 @@
 ## {{ name }}
 ----------------------------
-author: {{ author }}
+author: {{ author }} <br>
 description: {{ author }}
 
 <br>
