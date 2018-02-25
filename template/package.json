@@ -5,12 +5,12 @@
   "author": "{{ author }}",
   "private": true,
   "scripts": {
-    "start": "npm run dev",
+    "start": "node build/dev.js",
     "fix": "npm run lint -- --fix",
     {{#lint}}
     "lint": "eslint --ext .js,.vue src",
     {{/lint}}
-    "dev": "node build/dev.js",
+    "dev": "nodemon -w src",
     "build": "node build/prod.js",
     "test": "node build/testing.js"
   },
@@ -40,6 +40,7 @@
     "file-loader": "^1.1.6",
     "globby": "^7.1.1",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.15.1",
     "ora": "^1.4.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
