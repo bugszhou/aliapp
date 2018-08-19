@@ -10,7 +10,8 @@ const rm = require('rimraf'),
     env = require('../config/env.prod.js'),
     temp = require('../build/temp.js'),
     baseWebpackConfigs = require('./webpack.base.js'),
-    commonWebpack = require('./webpack.common.js');
+    commonWebpack = require('./webpack.common.js'),
+    UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 let appConfig = baseWebpackConfigs.appConfig;
 /**
@@ -18,6 +19,21 @@ let appConfig = baseWebpackConfigs.appConfig;
  */
 appConfig.plugins.push(new webpack.DefinePlugin({
     'process.env': env
+}), new UglifyJsPlugin({
+    uglifyOptions: {
+        mangle: {
+            eval: true
+        },
+        output: {
+            comments: false,
+            beautify: false,
+        },
+        compress: {
+            warnings: false
+        }
+    },
+    sourceMap: false,
+    parallel: 4
 }));
 rm('dist/**/*', function(err) {
     if (err) {

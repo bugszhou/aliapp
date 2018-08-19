@@ -7,8 +7,13 @@
 const path = require('path'),
     rm = require('rimraf'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
-    
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
+}
+
 let common = {
     output: {
         filename: '[name].js',
@@ -16,6 +21,12 @@ let common = {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                include: [resolve('src/app.js')]
+            },
             {
                 test: /\.(scss|sass)$/,
                 use: ExtractTextPlugin.extract({
@@ -42,14 +53,24 @@ let appConfig = {
         filename: '[name].js',
         path: path.resolve(__dirname, '../', 'dist')
     },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            }
+        ]
+    },
     plugins: [
         new CopyWebpackPlugin([
             {
                 context: path.resolve(__dirname, '../', 'src'),
                 from: '**/*',
-                ignore: ['**/*.scss']
+                ignore: ['**/*.scss', 'lib/**/*']
             }
-        ])
+        ]),
+        new FriendlyErrorsPlugin()
     ]
 };
 module.exports = {

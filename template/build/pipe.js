@@ -1,7 +1,7 @@
 
 /**
  * @param data 存储数据到this
- * @returns oproxy {{proxy对象}}
+ * @returns oproxy 
  */
 var pipe = function ({fnObj = {}, _this = {}, data = {}} = {}) {
     _this = JSON.parse(JSON.stringify(_this));

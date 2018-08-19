@@ -1,7 +1,8 @@
 /**
  * 
  */
-const rm = require('rimraf'),
+const path = require('path'),
+    rm = require('rimraf'),
     webpack = require('webpack'),
     env = require('../config/env.dev.js'),
     temp = require('../build/temp.js'),
@@ -10,47 +11,46 @@ const rm = require('rimraf'),
 
 let appConfig = baseWebpackConfigs.appConfig,
     compilerTimes = 1;
+baseWebpackConfigs.commonConfig.output = appConfig.output = {
+    filename: '[name].js',
+    path: path.resolve(__dirname, '../', 'dev')
+};
 /**
  * 注入环境变量
  */
 appConfig.plugins.push(new webpack.DefinePlugin({
     'process.env': env
 }));
-rm('dist/**/*', function(err) {
-    if (err) {
-        throw err;
-    }
-    temp(function(endFn) {
-        commonWebpack(appConfig, function(compiler) {
+temp(function(endFn) {
+    commonWebpack(appConfig, function(compiler) {
+        /**
+         * [监听watch]
+         */
+        watching = compiler.watch({
+            aggregateTimeout: 300,
+            poll: 1000
+        }, (err, stats) => {
+            if (err) {
+                throw err;
+            }
+            // console.log(stats.toString())
+            if (compilerTimes !== 1) {
+                console.log(`Compilation success! ${compilerTimes} times \n`);
+            }
+            console.log('watching...\n');
             /**
-             * [监听watch]
+             * [删除编译scss生成的js]
              */
-            watching = compiler.watch({
-                aggregateTimeout: 300,
-                poll: 1000
-            }, (err, stats) => {
+            rm('dev/**/*_scss.js', {
+                glob: true
+            }, function(err) {
                 if (err) {
-                    throw err;
+                    console.log(err);
                 }
-                // console.log(stats.toString())
-                if (compilerTimes !== 1) {
-                    console.log(`Compilation success! ${compilerTimes} times \n`);
-                }
-                console.log('watching...\n');
-                /**
-                 * [删除编译scss生成的js]
-                 */
-                rm('dist/**/*_scss.js', {
-                    glob: true
-                }, function(err) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-                ++compilerTimes;
             });
-            endFn(watching);
-            console.log(`First Compilation success! ${compilerTimes} times \n`);
+            ++compilerTimes;
         });
+        endFn(watching);
+        console.log(`First Compilation success! ${compilerTimes} times \n`);
     });
 });
