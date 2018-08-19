@@ -15,6 +15,11 @@
     "test": "node build/testing.js"
   },
   "devDependencies": {
+  "babel-core": "^6.26.3",
+  "babel-loader": "^7.1.4",
+  "babel-plugin-transform-runtime": "^6.23.0",
+  "babel-preset-env": "^1.7.0",
+  "babel-preset-stage-2": "^6.24.1",
     {{#lint}}
     "babel-eslint": "^7.1.1",
     "eslint": "^3.19.0",
