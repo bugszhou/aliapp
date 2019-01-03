@@ -6,11 +6,12 @@ const conf = {
     apiEnv: 'aliapp',
     appId: 'wx6c196413da3a8677',
     componentAppid: '',
-    development: 'https://alipay-egifting-test.e.verystar.cn',
-    test: 'https://alipay-egifting-test.e.verystar.cn',
-    production: 'https://alipay-egifting.e.verystar.cn'
+    development: 'https://xxx.com',
+    staging: 'https://xxx.com',
+    testing: 'https://xxx.com',
+    production: 'https://xxx.com'
 };
-const BASE_URL = true ? conf['test'] : conf[conf.env];
+const BASE_URL = true ? conf['testing'] : conf[conf.env];
 
 module.exports = {
     get env() {

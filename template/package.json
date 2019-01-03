@@ -12,6 +12,7 @@
     {{/lint}}
     "dev": "nodemon -w src",
     "build": "node build/prod.js",
+    "stg": "node build/stg.js",
     "test": "node build/testing.js"
   },
   "devDependencies": {
