@@ -8,6 +8,7 @@ const path = require('path'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     minify = require('html-minifier').minify,
+    UglifyJS = require('uglify-es'),
     conf = require('../config');
 
 function resolve (dir) {
@@ -76,6 +77,13 @@ let appConfig = {
                             collapseInlineTagWhitespace: true,
                             sortAttributes: true
                         });
+                    }
+                    if (/\.(js)$/.exec(path) && process.env.NODE_ENV != 'development') {
+                        let result = UglifyJS.minify(content.toString());
+                        if (result.error) {
+                            return content;
+                        }
+                        return result.code;
                     }
                     return content;
                 }
