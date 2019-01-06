@@ -12,12 +12,17 @@ const path = require('path'),
     baseWebpackConfigs = require('./webpack.base.js'),
     commonWebpack = require('./webpack.common.js');
 
+
 let appConfig = baseWebpackConfigs.appConfig,
-    compilerTimes = 1;
-baseWebpackConfigs.commonConfig.output = appConfig.output = {
-    filename: '[name].js',
-    path: path.resolve(__dirname, '../', 'dev')
-};
+    compilerTimes = 1,
+    foutput = {
+        filename: '[name].js',
+        path: path.resolve(__dirname, '../', 'dev')
+    };
+// baseWebpackConfigs.commonConfig.output = appConfig.output = {
+//     filename: '[name].js',
+//     path: path.resolve(__dirname, '../', 'dev')
+// };
 /**
  * 注入环境变量
  */
@@ -101,7 +106,7 @@ temp(function(endFn) {
         });
         endFn(watching);
         console.log(`First Compilation success! ${compilerTimes} times \n`);
-    });
+    }, foutput);
 });
 
 function clearConsole(msg) {
