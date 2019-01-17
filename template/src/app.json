@@ -11,6 +11,7 @@
         "navigationBarTitleText": "{{ name }}",
         "navigationBarTextStyle":"black"
     },
+    {{#tab}}
     "tabBar": {
         "list": [
             {
@@ -18,6 +19,7 @@
                 "iconPath": "./assets/imgs/tab.png",
                 "selectedIconPath": "./assets/imgs/tab.png",
                 "text": "tab1"
+            },
             },
             {
                 "pagePath": "pages/index/index",
@@ -27,5 +29,6 @@
             }
         ]
     },
+    {{/tab}}
     "debug": true
 }
