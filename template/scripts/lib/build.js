@@ -4,10 +4,8 @@
 
 const webpack = require('webpack'),
     baseConfig = require('../lib/webpack.base'),
-    scssConfigs = require('../lib/webpack.scss')
-{{#lint}},
-runEslint = require('../lib/runEslint')
-{{/lint}};
+    scssConfigs = require('../lib/webpack.scss'){{#lint}},
+    runEslint = require('../lib/runEslint'){{/lint}};
 
     let configs = [...scssConfigs, baseConfig],
         compilerTimes = 1,
