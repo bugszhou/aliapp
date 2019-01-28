@@ -20,7 +20,6 @@
                 "selectedIconPath": "./assets/imgs/tab.png",
                 "text": "tab1"
             },
-            },
             {
                 "pagePath": "pages/index/index",
                 "iconPath": "./assets/imgs/tab.png",
