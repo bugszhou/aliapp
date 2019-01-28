@@ -42,6 +42,7 @@ module.exports = {
     ...getUglifyJsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        PRJ_ENV: JSON.stringify(ENV),
         ...envData
       }
     }),
