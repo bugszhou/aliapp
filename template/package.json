@@ -63,6 +63,13 @@
         "uglifyjs-webpack-plugin": "^1.3.0",
         "webpack": "^3.10.0"
     },
+    {{#gitCommitMsg}}
+    "husky": {
+      "hooks": {
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    {{/gitCommitMsg}}
     "engines": {
         "node": ">= 6.0.0",
         "npm": ">= 3.0.0"
@@ -71,10 +78,5 @@
         "> 1%",
         "last 2 versions",
         "not ie <= 8"
-    ]{{#gitCommitMsg}},
-    "husky": {
-        "hooks": {
-        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
-    }{{/gitCommitMsg}}
+    ]
 }

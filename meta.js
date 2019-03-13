@@ -62,6 +62,6 @@ module.exports = {
   filters: {
     'scripts/.eslintrc.js': 'lint',
     'scripts/.eslintignore': 'lint',
-    'commitlint.config.js': 'gitCommitMsg'
+    'commitlint.config.js': 'gitCommitMsg',
   }
 };
