@@ -50,6 +50,10 @@ module.exports = {
         // },
       ],
     },
+    gitCommitMsg: {
+      type: 'confirm',
+      message: 'Use commitlint to check commit message?(Angular Commit Message)',
+    },
     // sass: {
     //     type: 'confirm',
     //     message: 'Use sass?'
