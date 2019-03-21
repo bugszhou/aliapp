@@ -39,6 +39,16 @@ module.exports = {
       ...miniJsLoader(conf.miniJsSuffix),
       scssLoader(),
       {
+        test: /\.json$/,
+        use: {
+          loader: 'mini-json-loader',
+          options: {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+          },
+        },
+        exclude: /node_modules/,
+      },
+      {
         test: /\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/,
