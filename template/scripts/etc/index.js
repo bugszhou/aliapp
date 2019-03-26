@@ -21,6 +21,7 @@ module.exports = {
   eslintSuffix: '(js|sjs)',
   miniJsSuffix: 'sjs',
   globalObject: 'my',
+  sourceMap: true,
   development: getPrjConfig({
     UglifyJs: false,
     codePath: path.resolve(process.cwd(), 'dist/dev'),
