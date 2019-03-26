@@ -2,6 +2,7 @@ const path = require('path'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   {getEntry, MiniappAutoPlugin} = require('miniapp-auto-webpack-plugin'),
   FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'),
+  StyleLintPlugin  = require('stylelint-webpack-plugin'),
   notifier = require('node-notifier'),
   ICON = path.join(process.cwd(), 'scripts/logo.png'),
   ENV = process.env.PRJ_ENV,
@@ -118,6 +119,7 @@ module.exports = {
         });
       },
     }),
+    new StyleLintPlugin(),
     new MiniappAutoPlugin(),
     ...miniCssPlugin(conf.cssSuffix),
     new CopyWebpackPlugin([
